@@ -11,7 +11,7 @@ function App() {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <BrowserRouter basename="/goit-react-hw-06-phonebook">
+                <BrowserRouter basename="/goit-react-hw-07-phonebook">
                     <Navbar />
                     <UserRoutes />
                 </BrowserRouter>
