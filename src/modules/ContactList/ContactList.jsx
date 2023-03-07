@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
-import React, { useEffect } from 'react';
-
+// import React, { useEffect } from 'react';
+import React from 'react';
 // import { deleteContact } from "../../redux/contacts/contacts-slice";
-import { fetchAllContacts, fetchDeleteContact } from "../../redux/contacts/contacts-operations";
+// import { fetchAllContacts, fetchDeleteContact } from "../../redux/contacts/contacts-operations";
+import { fetchDeleteContact } from "../../redux/contacts/contacts-operations";
 import { getAllContacts, getFilteredContacts } from "../../redux/contacts/contacts-selectors";
 import {getFilter} from "../../redux/filter/filter-selectors";
 
@@ -14,9 +15,9 @@ const ContactList = () => {
 
     const dispatch = useDispatch();
 
-    useEffect(()=> {
-        dispatch(fetchAllContacts())
-    }, [dispatch])
+    // useEffect(()=> {
+    //     dispatch(fetchAllContacts());
+    // }, [dispatch])
 
     const handleDeleteContact = (id) => {
         dispatch(fetchDeleteContact(id));
