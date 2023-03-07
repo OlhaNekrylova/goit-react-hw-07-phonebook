@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/contacts-slice";
+// import { addContact } from "../../redux/contacts/contacts-slice";
+import { fetchAddContact } from "../../redux/contacts/contacts-operations";
 import { getAllContacts } from "../../redux/contacts/contacts-selectors";
 
 import styles from './ContactForm.module.css';
@@ -24,7 +25,7 @@ const ContactForm = () => {
         if (isPresentContact){
             alert(`${newContact.name} is already in contacts.`)
         } else {
-            dispatch(addContact(newContact));
+            dispatch(fetchAddContact(newContact));
             form.reset();
         }        
     }
