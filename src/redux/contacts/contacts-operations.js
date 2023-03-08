@@ -17,29 +17,28 @@ export const fetchAllContacts = createAsyncThunk(
 
 export const fetchAddContact = createAsyncThunk(
     "contacts/addContact",
-    async(data, {rejectWithValue}) => {
+    async({name, phone}, {rejectWithValue}) => {
         try {
-            const result = await api.addContact(data);
+            const result = await api.addContact({name, phone});
             return result;
         }
         catch({response}) {
             return rejectWithValue(response.data);
         }
     },
-    // {
-    //     condition: ({title, author}, {getState}) => {
-    //         const {books} = getState();
-    //         const normalizedTitle = title.toLowerCase();
-    //         const normalizedAuthor = author.toLowerCase();
-    //         const result = books.items.find(({ title, author }) => {
-    //             return (title.toLowerCase() === normalizedTitle && author.toLowerCase() === normalizedAuthor)
-    //         })
-    //         if(result){
-    //             alert(`${title}. Author: ${author} is already ixist`);
-    //             return false;
-    //         }
-    //     }
-    // }
+    {
+        condition: ({name}, {getState}) => {
+            const {contacts} = getState();
+            const isPresentContact = contacts.items.find(element => 
+                element.name.toLowerCase() === name.toLowerCase()
+            );
+    
+            if (isPresentContact) { 
+                alert('Contact is already exist!')
+                return false;
+            }
+        }
+    }
 );
 
 export const fetchDeleteContact = createAsyncThunk(
